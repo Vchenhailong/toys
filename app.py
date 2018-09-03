@@ -36,6 +36,15 @@ def logout():
     return redirect('http://127.0.0.1:5000/')
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
 # @app.route('/user/<int:id>')
 # def get_user(id):
 #     user = load_user(id)
